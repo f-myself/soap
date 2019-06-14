@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Created with Liquid XML Studio Developer Edition 9.0.11.3078 (http://www.liquid-technologies.com)-->
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://example.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" name="CarsService" targetNamespace="http://example.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <types>
+        <xs:schema xmlns:tns="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://example.com/">
+            <complexType name="Car">
+                <sequence>
+                    <element name="carId" type="integer" />
+                    <element name="brand" type="string" />
+                    <element name="model" type="string" />
+                </sequence>
+            </complexType>
+            <complexType name="CarDetailed">
+                <sequence>
+                    <element name="model" type="string" />
+                    <element name="year" type="integer" />
+                    <element name="capacity" type="float" />
+                    <element name="color" type="string" />
+                    <element name="max_speed" type="integer" />
+                    <element name="price" type="integer" />
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfCars">
+                <sequence>
+                    <element xmlns:q1="http://example.com/" minOccurs="0" maxOccurs="unbounded" name="Car" nillable="true" type="q1:Car" />
+                </sequence>
+            </complexType>
+            <element name="ListOfAllCars">
+                <complexType>
+                    <sequence />
+                </complexType>
+            </element>
+            <element name="ListOfAllCarsResponse">
+                <complexType>
+                    <sequence>
+                        <element xmlns:q2="http://example.com/" name="ListOfAllCarsResult" type="q2:ArrayOfCars" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="CarById">
+                <complexType>
+                    <sequence>
+                        <element name="carId" type="integer" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="CarByIdResponse">
+                <complexType>
+                    <sequence>
+                        <element xmlns:q3="http://example.com/" name="CarByIdResult" type="q3:CarDetailed" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ListOfCarsByParam">
+                <complexType>
+                    <sequence>
+                        <element name="year" type="integer" />
+                        <element name="model" type="anySimpleType" />
+                        <element name="capacity" type="anySimpleType" />
+                        <element name="color" type="anySimpleType" />
+                        <element name="maxSpeed" type="anySimpleType" />
+                        <element name="price" type="anySimpleType" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="ListOfCarsByParamResponse">
+                <complexType>
+                    <sequence>
+                        <element xmlns:q4="http://example.com/" name="ListOfCarsByParamResult" type="q4:ArrayOfCars" />
+                    </sequence>
+                </complexType>
+            </element>
+        </xs:schema>
+    </types>
+    <message name="ListOfAllCarsSoapRequest">
+        <part name="parameters" element="tns:ListOfAllCars" />
+    </message>
+    <message name="ListOfAllCarsSoapResponse">
+        <part name="parameters" element="tns:ListOfAllCarsResponse" />
+    </message>
+    <message name="CarByIdSoapRequest">
+        <part name="parameters" element="tns:CarById" />
+    </message>
+    <message name="CarByIdSoapResponse">
+        <part name="parameters" element="tns:CarByIdResponse" />
+    </message>
+    <message name="ListOfCarsByParamSoapRequest">
+        <part name="parameters" element="tns:ListOfCarsByParam" />
+    </message>
+    <message name="ListOfCarsByParamSoapResponse">
+        <part name="parameters" element="tns:ListOfCarsByParamResponse" />
+    </message>
+    <portType name="CarsServiceSOAPType">
+        <operation name="getAllCars">
+            <input message="tns:ListOfAllCarsSoapRequest" />
+            <output message="tns:ListOfAllCarsSoapResponse" />
+        </operation>
+        <operation name="getCarById">
+            <input name="parameters" message="tns:CarByIdSoapRequest" />
+            <output message="tns:CarByIdSoapResponse" />
+        </operation>
+        <operation name="getCarsByParam">
+            <input message="tns:ListOfCarsByParamSoapRequest" />
+            <output message="tns:ListOfAllCarsSoapRequest" />
+        </operation>
+    </portType>
+    <binding name="CarsServiceSOAPBinding" type="tns:CarsServiceSOAPType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="getAllCars">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+        </operation>
+        <operation name="getCarById">
+            <soap:operation soapAction="" />
+            <input name="parameters">
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+        </operation>
+        <operation name="getCarsByParam">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+        </operation>
+    </binding>
+    <service name="CarsService">
+        <port name="CarsServiceSOAP" binding="tns:CarsServiceSOAPBinding">
+            <soap:address location="" />
+        </port>
+    </service>
+</definitions>

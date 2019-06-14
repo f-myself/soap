@@ -7,8 +7,12 @@ include "libs/ServiceHandler.php";
 $obj = new ServiceHandler;
 
 //var_dump($obj->getAllCars());
-echo "<pre>";
+//echo "<pre>";
 //var_dump($obj->getCarById(2));
-var_dump($obj->getCarsByParam(2019, false, 5, false, false, 200000));
-echo "</pre>";
+//var_dump($obj->getCarsByParam(2019, false, 5, false, false, 200000));
+//echo "</pre>";
+
+$server = new SoapServer('http://soap.loc/soap/task2/server/CarsService.wsdl');
+$server->setClass('libs\ServiceHandler');
+$server->handle();
 
