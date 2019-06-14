@@ -27,8 +27,39 @@ class ServiceHandler
         }
     }
 
-    function getCarsByParam($year, $model=false, $year=false, $capacity=false, $color=false, $maxSpeed=false, $price=false)
+    function getCarsByParam($year, $model=null, $capacity=null, $color=null, $maxSpeed=null, $price=null)
     {
-        return true;
+        $carsByParams = $this->sql->newQuery()
+                                  ->select(['c.id', 'b.brand', 'model'])
+                                  ->from('cars c')
+                                  ->join('brands b', 'c.brand_id=b.id')
+                                  ->where("c.year<=" . $year);
+        if ($model and is_string($model))
+        {
+            $carsByParams = $carsByParams->l_and("c.model='" . trim($model) . "'");
+            echo $carsByParams->getQuery();
+        }
+
+        if ($capacity and is_numeric($capacity))
+        {
+            $carsByParams = $carsByParams->l_and("c.capacity<=" . $capacity);
+        }
+
+        if ($color and is_string($color))
+        {
+            $carsByParams = $carsByParams->l_and("c.color='" . trim($color) . "'");
+        }
+
+        if ($maxSpeed and is_numeric($maxSpeed))
+        {
+            $carsByParams = $carsByParams->l_and("c.max_speed<=" . $maxSpeed);
+        }
+
+        if ($price and is_numeric($price))
+        {
+            $carsByParams = $carsByParams->l_and("c.price<=" . $price);
+        }
+        $carsByParams = $carsByParams->doQuery();
+        return $carsByParams;
     }
 }

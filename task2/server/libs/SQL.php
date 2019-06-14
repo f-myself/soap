@@ -11,6 +11,7 @@ class SQL
 	protected $from;
 	protected $where;
 	protected $join;
+	protected $and;
 	protected $leftJoin;
 	protected $rightJoin;
 	protected $crossJoin;
@@ -31,6 +32,7 @@ class SQL
 			$this->from = "FROM";
 			$this->where = "WHERE";
 			$this->join = "INNER JOIN";
+			$this->and = "AND";
 			$this->leftJoin = "LEFT OUTER JOIN";
 			$this->rightJoin = "RIGHT OUTER JOIN";
 			$this->crossJoin = "CROSS JOIN";
@@ -131,7 +133,18 @@ class SQL
     	}
     	array_push($this->errors, ERR_VAL_CONDITIONS);
     	return $this;
-    }
+	}
+	
+	public function l_and($conditions)
+	{
+		if(is_string(trim($conditions)))
+		{
+			$this->query .= " AND " . trim($conditions);
+			return $this;
+		}
+		array_push($this->errors, ERR_VAL_CONDITIONS);
+    	return $this;
+	}
 
     public function leftJoin($tableName, $conditions)
     {
