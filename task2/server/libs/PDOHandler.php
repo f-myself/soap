@@ -28,7 +28,7 @@ class PDOHandler extends SQL
 			$queryResult = $stmt->execute();
 			//var_dump($result);
 			$i = 0;
-	        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) 
+	        while ($row = $stmt->fetch(PDO::FETCH_OBJ)) 
 	        {
 	            $selectResult[$i] = $row;
 	            $i++;

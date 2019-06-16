@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Created with Liquid XML Studio Developer Edition 9.0.11.3078 (http://www.liquid-technologies.com)-->
-<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://192.168.0.15/~user6/soap/task2/server/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" name="CarsService" targetNamespace="http://192.168.0.15/~user6/soap/task2/server/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://soap.loc/soap/task2/server/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" name="CarsService" targetNamespace="http://soap.loc/soap/task2/server/" xmlns="http://schemas.xmlsoap.org/wsdl/">
     <types>
-        <xs:schema xmlns:tns="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://192.168.0.15/~user6/soap/task2/server/">
+        <xs:schema xmlns:tns="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://soap.loc/soap/task2/server/">
             <complexType name="Car">
                 <sequence>
                     <element name="carId" type="integer" />
@@ -22,7 +22,7 @@
             </complexType>
             <complexType name="ArrayOfCars">
                 <sequence>
-                    <element xmlns:q1="http://192.168.0.15/~user6/soap/task2/server/" minOccurs="0" maxOccurs="unbounded" name="Car" nillable="true" type="q1:Car" />
+                    <element xmlns:q1="http://soap.loc/soap/task2/server/" minOccurs="0" maxOccurs="unbounded" name="Car" nillable="true" type="q1:Car" />
                 </sequence>
             </complexType>
             <element name="ListOfAllCars">
@@ -33,7 +33,7 @@
             <element name="ListOfAllCarsResponse">
                 <complexType>
                     <sequence>
-                        <element xmlns:q2="http://192.168.0.15/~user6/soap/task2/server/" name="ListOfAllCarsResult" type="q2:ArrayOfCars" />
+                        <element xmlns:q2="http://soap.loc/soap/task2/server/" name="ListOfAllCarsResult" type="q2:ArrayOfCars" />
                     </sequence>
                 </complexType>
             </element>
@@ -47,7 +47,7 @@
             <element name="CarByIdResponse">
                 <complexType>
                     <sequence>
-                        <element xmlns:q3="http://192.168.0.15/~user6/soap/task2/server/" name="CarByIdResult" type="q3:CarDetailed" />
+                        <element xmlns:q3="http://soap.loc/soap/task2/server/" name="CarByIdResult" type="q3:CarDetailed" />
                     </sequence>
                 </complexType>
             </element>
@@ -66,7 +66,7 @@
             <element name="ListOfCarsByParamResponse">
                 <complexType>
                     <sequence>
-                        <element xmlns:q4="http://192.168.0.15/~user6/soap/task2/server/" name="ListOfCarsByParamResult" type="q4:ArrayOfCars" />
+                        <element xmlns:q4="http://soap.loc/soap/task2/server/" name="ListOfCarsByParamResult" type="q4:ArrayOfCars" />
                     </sequence>
                 </complexType>
             </element>
@@ -136,7 +136,7 @@
     </binding>
     <service name="CarsService">
         <port name="CarsServiceSOAP" binding="tns:CarsServiceSOAPBinding">
-            <soap:address location="http://192.168.0.15/~user6/soap/task2/server/index.php" />
+            <soap:address location="http://soap.loc/soap/task2/server/index.php" />
         </port>
     </service>
 </definitions>

@@ -261,13 +261,23 @@ class SQL
     	return $this;
     }
 
-    public function limit($limit)
+    public function limit($limit, $desc=false)
     {
-        if (is_numeric($limit))
-        {
-            $this->query = " $this->limit" . trim($limit);
-            return $this;
-        }
+		if(is_bool($desc) and false === $desc)
+		{
+			if (is_numeric($limit))
+			{
+				$this->query .= " $this->limit" . trim($limit);
+				return $this;
+			}
+		} elseif (is_bool($desc) and true === $desc)
+		{
+			if (is_numeric($limit))
+			{
+				$this->query .= " DESC $this->limit " . trim($limit);
+				return $this;
+			}
+		}
         array_push($this->errors, ERR_VAL_LIMIT);
     	return $this;
     }
@@ -276,7 +286,7 @@ class SQL
     {
     	if(is_string($tableName) and trim($tableName))
     	{
-    		$this->query .= " $this->insert " . trim($tableName);
+    		$this->query .= "$this->insert " . trim($tableName);
     	} else {
     		array_push($this->errors, ERR_VAL_TABLENAME);
     		return $this;
@@ -296,7 +306,7 @@ class SQL
 
     	if (is_string($values))
     	{
-    		$this->query .= " ($values)";
+    		$this->query .= "VALUES ($values)";
     	} elseif (is_array($values)) 
     	{ 
     		$vals = implode(", ", $values);
