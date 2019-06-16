@@ -5,7 +5,13 @@ $client = new SoapClient('http://soap.loc/soap/task2/server/?WSDL');
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
+
+    $errors = "";
+
     $year = trim(strip_tags($_POST['year']));
+
+    //var_dump($_POST);
+
     $model = trim(strip_tags($_POST['model']));
     $capacity = trim(strip_tags($_POST['capacity']));
     $color = trim(strip_tags($_POST['color']));
@@ -19,7 +25,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                                              "maxSpeed" => $maxSpeed,
                                              "price"    => $price
                                             ));
+    
+    if(!$allCars)
+    {
+        $errors = "No car by this params. Please, try again";
+    }
 
+    if(!$year or !is_numeric($year))
+    {
+        $errors = "Hey! I saw what you have done, angry hacker! Stop touching my code! Year is numeric and required. Cuz I said so.";
+    }
 
 } else {
     $allCars = $client->getAllCars();

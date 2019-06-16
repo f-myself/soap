@@ -67,8 +67,11 @@
                     </form>
             </div>
             <div class="col-9">
+                <h2><?=$errors?></h2>
                 <div class="row">
                     <?
+                    if(!$errors)
+                    {
                         foreach($allCars as $car)
                         {
                     ?>
@@ -77,6 +80,7 @@
                         </div>
                     <?
                         }
+                    }
                     ?>
                 </div>
                 
