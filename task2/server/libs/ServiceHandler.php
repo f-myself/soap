@@ -20,7 +20,6 @@ class ServiceHandler
 
     function getCarById($param)
     {
-        //var_dump($id);
         $id = $param->CarId;
         if(is_numeric($id))
         {
@@ -29,7 +28,6 @@ class ServiceHandler
                              ->join('brands b', 'c.brand_id=b.id')
                              ->where('c.id=' . $id)
                              ->doQuery();
-            // var_dump($car);
             return $car[0];
         }
     }

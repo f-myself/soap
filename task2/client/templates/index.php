@@ -26,30 +26,30 @@
                             <input type="range" name="year" class="form-control" id="Year" min="2000" max="2019" required>
                         </div>
                         <div class="form-group">
-                            <label for="Year">Model</label>
-                            <input type="text" name="model" class="form-control" id="Year" placeholder="X5">
+                            <label for="Model">Model</label>
+                            <input type="text" name="model" class="form-control" id="Model" placeholder="X5">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Engine capacity</label>
                             <select class="form-control" name="capacity" id="exampleFormControlSelect1">
-                            <option value="">Any Engine capacity</option>
-                            <option value="1.0">less then 1.0</option>
-                            <option value="2.0">less then 2.0</option>
-                            <option value="3.0">less then 3.0</option>
+                                <option value="">Any Engine capacity</option>
+                                <option value="1.0">less then 1.0</option>
+                                <option value="2.0">less then 2.0</option>
+                                <option value="3.0">less then 3.0</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect2">Color</label>
                             <select class="form-control" name="color" id="exampleFormControlSelect2">
-                            <option value="">Any color</option>
-                            <option>silver</option>
-                            <option>black</option>
-                            <option>brown</option>
-                            <option>blue</option>
-                            <option>orange</option>
-                            <option>cyan</option>
-                            <option>red</option>
-                            <option>violet</option>
+                                <option value="">Any color</option>
+                                <option>silver</option>
+                                <option>black</option>
+                                <option>brown</option>
+                                <option>blue</option>
+                                <option>orange</option>
+                                <option>cyan</option>
+                                <option>red</option>
+                                <option>violet</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -67,7 +67,7 @@
                     </form>
             </div>
             <div class="col-9">
-                <h2><?=$errors?></h2>
+                <h2><?=$errors?> <?=$status?></h2>
                 <div class="row">
                     <?
                     if(!$errors)

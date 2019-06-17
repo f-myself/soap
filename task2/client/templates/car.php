@@ -19,9 +19,10 @@
             </div>
         </div>
         <div class="row pt-4">
-            <div class="col-12">
+            <div class="col-9">
+            <h2><?=$errors?></h2>
             <?
-            if ($carInfo->year)
+            if (!$errors)
             {
             ?>
                 <table class="table">
@@ -53,9 +54,38 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-3 text-center">
+                <h4>Buy this car </h4>
+                <form class="p-3" method="POST" action="index.php">
+                    <div id="js_visible-form">
+                        <input type="hidden" name="CarId" value="<?=$carInfo->id?>">
+                        <div class="form-group">
+                            <label for="FirstName">First Name</label>
+                            <input type="text" name="FirstName" class="form-control" id="FirstName" placeholder="John" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="LastName">Last Name</label>
+                            <input type="text" name="LastName" class="form-control" id="LastName" placeholder="Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="PaymentId">Payment</label>
+                            <select class="form-control" name="PaymentId" id="PaymentId" required>
+                                <option value="1">Credit card</option>
+                                <option value="2">Cash</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Buy</button>
+                            <a href="index.php" class="btn btn-primary">Home Page</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="row">
-            TODO: OrderForm
+            <div class="col-4"></div>
+            
+            <div class="col-4"></div>
         </div>
         <?
             } else {

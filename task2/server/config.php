@@ -7,7 +7,7 @@ define(DB_USER, 'root');
 define(DB_PASSWORD, '');
 define(DB_NAME, 'cars_shop');
 
-define(WSDL_URL, 'http://soap.loc/soap/task2/server/test.wsdl');
+define(WSDL_URL, 'http://soap.loc/soap/task2/server/CarsService.wsdl');
 
 /* Error messages */
 define(ERR_CONNECT_DB, "Cannot connect database. Check username or password");
