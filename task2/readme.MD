@@ -1,6 +1,6 @@
 Не забыть поменять:
 
-    1. Ссылки на WSDL-сервер в конфигах (server || client/config.php)
+    1. Ссылки на WSDL-сервер в конфигах (server && client/config.php)
     2. Параметры подключения к БД (server/config.php)
     3. Ссылки в неймспейсах WSDL
 
